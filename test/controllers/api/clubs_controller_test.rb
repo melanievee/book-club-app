@@ -1,6 +1,18 @@
 require 'test_helper'
 
 class Api::ClubsControllerTest < ActionDispatch::IntegrationTest
+  test 'get all clubs' do
+    club1 = create(:club)
+    club2 = create(:club)
+
+    get api_clubs_url
+
+    response_body = JSON.parse(@response.body)
+    assert_equal 2, response_body.length
+    assert_equal club1.name, response_body[0]['name']
+    assert_equal club2.name, response_body[1]['name']
+  end
+
   test 'get single club is successful and with correct content type and club name' do
     club = create(:club)
     get api_club_url(club)
