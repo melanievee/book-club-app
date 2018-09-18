@@ -14,6 +14,9 @@ puts "Seeding clubs"
 club = Club.create(
   name: "My awesome book club"
 )
+clubWithoutMembers = Club.create(
+  name: "I wish someone would join me"
+)
 
 puts "Seeding users"
 lucille = User.create(
